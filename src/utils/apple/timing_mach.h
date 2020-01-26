@@ -22,6 +22,8 @@
 #if (defined(__MACH__) && TIMING_MACH_BEFORE_10_12)
 /* **** */
 /* MACH */
+    /* clockid_t - emulate POSIX */
+    typedef int clockid_t;
 
     /* CLOCK_REALTIME - emulate POSIX */
     #ifndef CLOCK_REALTIME
