@@ -6,7 +6,7 @@
 #include <time.h>
 
 /* OSX before 10.12 (MacOS Sierra) */
-#define TIMING_MACH_BEFORE_10_12 (defined(__MACH__) && __MAC_OS_X_VERSION_MIN_REQUIRED < 101200)
+#define TIMING_MACH_BEFORE_10_12 (__MAC_OS_X_VERSION_MIN_REQUIRED < 101200)
 
 /* scale factors */
 #define TIMING_GIGA (1000000000)
@@ -19,12 +19,9 @@
         clock_gettime
         clock_getres
 */
-#if (TIMING_MACH_BEFORE_10_12)
+#if (defined(__MACH__) && TIMING_MACH_BEFORE_10_12)
 /* **** */
 /* MACH */
-
-    /* clockid_t - emulate POSIX */
-    typedef int clockid_t;
 
     /* CLOCK_REALTIME - emulate POSIX */
     #ifndef CLOCK_REALTIME
