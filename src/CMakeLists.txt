@@ -91,6 +91,7 @@ set ( libfluidsynth_SOURCES
     midi/fluid_midi_router.h
     midi/fluid_seqbind.c
     midi/fluid_seq.c
+    ${public_main_HEADER}
 )
 
 if ( APPLE )

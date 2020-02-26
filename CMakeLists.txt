@@ -288,7 +288,11 @@ set ( public_HEADERS
 )
 
 set ( public_main_HEADER
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/fluidsynth.h
+    ${CMAKE_CURRENT_BINARY_DIR}/include/fluidsynth.h
+)
+
+configure_file ( ${CMAKE_CURRENT_SOURCE_DIR}/include/fluidsynth.h.in
+    ${public_main_HEADER}
 )
 
 # Process subdirectories
