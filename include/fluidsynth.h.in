@@ -27,11 +27,15 @@
 extern "C" {
 #endif
 
-#if defined(WIN32)
-#if defined(FLUIDSYNTH_DLL_EXPORTS)
-#define FLUIDSYNTH_API __declspec(dllexport)
-#elif defined(FLUIDSYNTH_NOT_A_DLL)
+#cmakedefine01 BUILD_SHARED_LIBS
+
+#if (BUILD_SHARED_LIBS == 0)
+#define FLUIDSYNTH_API // building static lib? no visibility control then
+#elif defined(WIN32)
+#if defined(FLUIDSYNTH_NOT_A_DLL)
 #define FLUIDSYNTH_API
+#elif defined(FLUIDSYNTH_DLL_EXPORTS)
+#define FLUIDSYNTH_API __declspec(dllexport)
 #else
 #define FLUIDSYNTH_API __declspec(dllimport)
 #endif
